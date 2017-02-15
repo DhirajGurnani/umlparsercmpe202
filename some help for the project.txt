@@ -1,0 +1,6 @@
+plantuml ke syntax mein convert karna rahega
+
+
+input file
+mera program parses karega
+plantuml ka syntax
