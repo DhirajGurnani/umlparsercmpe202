@@ -26,7 +26,7 @@ import net.sourceforge.plantuml.SourceStringReader;
  *
  */
 public class App 
-{
+{/*
 	public static void main(String[] args) throws Exception {
         // creates an input stream for the file to be parsed
         FileInputStream in = new FileInputStream("b.java");
@@ -94,7 +94,7 @@ public class App
         reader.generateImage(output, new FileFormatOption(FileFormat.PNG, false));
     }
 
-    /**
+    *//**
      * Simple visitor implementation for visiting MethodDeclaration nodes.
      *//*
     private static class MethodVisitor extends VoidVisitorAdapter<Void> {
@@ -128,6 +128,6 @@ public class App
 			
 		}
     	}
-*/
-	}
+
+*/	}
 
