@@ -2,6 +2,10 @@ import japa.parser.ast.CompilationUnit;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+
+import net.sourceforge.plantuml.SourceStringReader;
 
 import org.antlr.v4.runtime.*;
 
@@ -23,6 +27,14 @@ public class main {
 				System.out.println(ClassName);
 			}
 		}
+		String result= "@startuml \n skinparam classAttributeIconSize 0 \n class Dummy {  \n -field1  \n #field2 \n  ~method1() \n +method2() \n } \n  @enduml";
+//		String result=;
+		OutputStream outputStream = new FileOutputStream("output.png");
+		SourceStringReader stringReader = new SourceStringReader(result);
+		String destination = stringReader.generateImage(outputStream);
+
+
+
 
 		//File fileTemp[] = in.listFiles((File pathName) -> pathName.getName().endsWith(".java"));
 		//CompilationUnit cUnit[] = new CompilationUnit[fileTemp.length];
