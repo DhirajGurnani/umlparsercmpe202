@@ -25,9 +25,11 @@ public class main {
 			//String ext = fileName.substring(fileName.length() - 4);
 			if(ClassName.endsWith("java")){
 				System.out.println(ClassName);
+			} else {
+				
 			}
 		}
-		String result= "@startuml \n skinparam classAttributeIconSize 0 \n class Dummy {  \n -field1  \n #field2 \n  ~method1() \n +method2() \n } \n  @enduml";
+		String result= "@startuml \n skinparam classAttributeIconSize 0 \n class Dummy {  \n -field1 \n #field2 \n ~method1() \n +method2() \n } \n  @enduml";
 //		String result=;
 		OutputStream outputStream = new FileOutputStream("output.png");
 		SourceStringReader stringReader = new SourceStringReader(result);
