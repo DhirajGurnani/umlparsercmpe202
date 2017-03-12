@@ -26,8 +26,4 @@ public class ListClassesExample {
 	        }).explore(projectDir);
 	    }
 
-	    public static void main(String[] args) {
-	        File projectDir = new File("source_to_parse/junit-master");
-	        listClasses(projectDir);
-	    }
 }
