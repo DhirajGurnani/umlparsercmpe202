@@ -8,9 +8,9 @@ import com.google.common.base.Strings;
 
 
 public class GettingClassNames {
+    static ArrayList<String> Class_Names = new ArrayList<String>();
 
-	public static ArrayList listClasses(File projectDir) {
-        ArrayList Class_Names = new ArrayList();
+	public static void getClasses(File projectDir) {
 
         new DirExplorer((level, path, file) -> path.endsWith(".java"), (level, path, file) -> {
         	
@@ -22,22 +22,24 @@ public class GettingClassNames {
 					    @Override
 					    public void visit(ClassOrInterfaceDeclaration n, Object arg) {
 					        super.visit(n, arg);
-					        //System.out.println(" * " + n.getName());
-					        Class_Names.add(n.getName());
-//					        System.out.println(" * get members" + n.getMembers());
+					        
+					    
+					        //System.out.println(" * " + n.getNameAsString());
+					        //Class_Names.add(n.getName());
+					        Class_Names.add(n.getNameAsString());
+					        
+					        //String s = (() n.getName()).getSimpleName();
+					        //System.out.println(" * get members" + n.getMembers());
 					    }
 					}.visit(JavaParser.parse(file), null);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
                 
-             //   System.out.println(); // empty line
-            //} catch (ParseException | IOException e) {
                 new RuntimeException();
             
         }).explore(projectDir);
-        //ArrayList a[] = {"asd"};
-        return Class_Names;
+        
+        
     }
 }
