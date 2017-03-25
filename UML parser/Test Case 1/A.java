@@ -14,5 +14,6 @@ public class A {
 	 
 	private Collection<D> d;
 	 
+    public int getStr() { return this.x ; }
 }
  
