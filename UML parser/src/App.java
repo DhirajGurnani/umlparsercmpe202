@@ -16,9 +16,12 @@ import com.google.common.base.Strings;
 public class App 
 {
 	    public static void main(String[] args) {
+	    	 ArrayList<String> Class_Names = new ArrayList<String>();
+
 	        File projectDir = new File("Test Case 1");
 	        GettingClassNames getclassnames = new GettingClassNames();
-	        getclassnames.getClasses(projectDir);
+	        Class_Names = getclassnames.getClasses(projectDir);
+	        System.out.println(Class_Names);
 	    }
 	}
 

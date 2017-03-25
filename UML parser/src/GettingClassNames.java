@@ -10,7 +10,7 @@ import com.google.common.base.Strings;
 public class GettingClassNames {
     static ArrayList<String> Class_Names = new ArrayList<String>();
 
-	public static void getClasses(File projectDir) {
+	public static ArrayList getClasses(File projectDir) {
 
         new DirExplorer((level, path, file) -> path.endsWith(".java"), (level, path, file) -> {
         	
@@ -39,6 +39,8 @@ public class GettingClassNames {
                 new RuntimeException();
             
         }).explore(projectDir);
+        
+        return Class_Names;
         
         
     }
