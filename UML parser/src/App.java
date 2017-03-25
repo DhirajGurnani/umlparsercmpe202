@@ -19,7 +19,7 @@ public class App
 	    	 ArrayList<String> Class_Names = new ArrayList<String>();
 
 	        File projectDir = new File("Test Case 1");
-	        GettingClassNames getclassnames = new GettingClassNames();
+	        Class_Structure getclassnames = new Class_Structure();
 	        Class_Names = getclassnames.getClasses(projectDir);
 	        System.out.println(Class_Names);
 	    }
