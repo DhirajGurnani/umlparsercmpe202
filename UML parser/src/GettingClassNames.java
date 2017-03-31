@@ -9,7 +9,9 @@ import com.google.common.base.Strings;
 
 public class GettingClassNames {
     static ArrayList<String> Class_Names = new ArrayList<String>();
-
+    static ArrayList<String> Extended_Class_Names = new ArrayList<String>();
+    static ArrayList<String> Child_Class_Names = new ArrayList<String>();
+    static ArrayList<String> Parent_Class_Names = new ArrayList<String>();
 	public static ArrayList getClasses(File projectDir) {
 
         new DirExplorer((level, path, file) -> path.endsWith(".java"), (level, path, file) -> {
