@@ -21,11 +21,13 @@ public class App
 {
 	    public static void main(String[] args) {
 	    	 ArrayList<String> Class_Names = new ArrayList<String>();
-	    	String result = "@startuml"+"Object <|-- ArrayList"+"Object : equals()"+"ArrayList : Object[] elementData"+"ArrayList : size()"+"@enduml";
+	    	//String result = "@startuml"+"Object <|-- ArrayList"+"Object : equals()"+"ArrayList : Object[] elementData"+"ArrayList : size()"+"@enduml";
 	        File projectDir = new File("Test Case 1");
 	        Class_Structure getclassnames = new Class_Structure();
-	        Class_Names = getclassnames.getClasses(projectDir);
-	        System.out.println(Class_Names);
+	        File fileTemp[] = projectDir.listFiles((File pathName) -> pathName.getName().endsWith(".java"));
+	        System.out.println(fileTemp[0]);
+	        //Class_Names = getclassnames.getClasses(projectDir);
+	        //System.out.println(Class_Names);
 	        //System.out.println(Class_Names);
 	        for(String x: Class_Names){
 	        	//System.out.println(x);
