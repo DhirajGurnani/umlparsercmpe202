@@ -25,6 +25,7 @@ public class App
 	        File projectDir = new File("Test Case 1");
 	        Class_Structure getclassnames = new Class_Structure();
 	        Class_Names = getclassnames.getClasses(projectDir);
+	        System.out.println(Class_Names);
 	        //System.out.println(Class_Names);
 	        for(String x: Class_Names){
 	        	//System.out.println(x);
@@ -35,7 +36,7 @@ public class App
 			            CompilationUnit cu = JavaParser.parse(in);
 
 			            // visit and print the methods names
-			            new MethodVisitor().visit(cu, null);
+			           // new MethodVisitor().visit(cu, null);
 			     				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
