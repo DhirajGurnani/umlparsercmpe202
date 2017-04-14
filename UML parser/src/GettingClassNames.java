@@ -7,8 +7,8 @@ import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import com.google.common.base.Strings;
 
 
-public class GettingClassNames {
-    static ArrayList<String> Class_Names = new ArrayList<String>();
+public class GettingClassNames extends VoidVisitorAdapter{
+/*    static ArrayList<String> Class_Names = new ArrayList<String>();
     static ArrayList<String> Extended_Class_Names = new ArrayList<String>();
     static ArrayList<String> Child_Class_Names = new ArrayList<String>();
     static ArrayList<String> Parent_Class_Names = new ArrayList<String>();
@@ -46,4 +46,10 @@ public class GettingClassNames {
         
         
     }
-}
+*/
+	@Override
+	public void visit(ClassOrInterfaceDeclaration classDeclaration, Object obj){
+		System.out.println(classDeclaration.getNameAsString());
+	}
+	//}
+	}
