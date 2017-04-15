@@ -1,9 +1,11 @@
 import japa.parser.JavaParser;
 import japa.parser.ast.body.ClassOrInterfaceDeclaration;
+import japa.parser.ast.type.ClassOrInterfaceType;
 import japa.parser.ast.visitor.VoidVisitorAdapter;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -11,8 +13,11 @@ public class Class_Structure {
 	  static ArrayList<String> Class_Names = new ArrayList<String>();
 	  static ArrayList<String> Method_Names = new ArrayList<String>();
 	  static ArrayList<String> Attribute_Names = new ArrayList<String>();
+	  
 		public static ArrayList getClasses(File projectDir) {
-
+			ArrayList<String> extend = new ArrayList<String>();
+			ArrayList<String> interfaces = new ArrayList<String>();
+			
 	        new DirExplorer((level, path, file) -> path.endsWith(".java"), (level, path, file) -> {
 	        	
 	          //  System.out.println(path);
@@ -24,8 +29,15 @@ public class Class_Structure {
 						    public void visit(ClassOrInterfaceDeclaration n, Object arg) {
 						        super.visit(n, arg);
 						        
-						    
-						        System.out.println(" * " + n.getName());
+			
+						        List<ClassOrInterfaceType> iFace = n.getExtends();
+								if(iFace != null){
+									for(ClassOrInterfaceType temp :iFace ){
+										System.out.println("iabbwoubuobo");
+										interfaces.add(temp.getName());
+									}
+								}
+//						        System.out.println(n.getName() + " * " + n.getExtends()+" * "+n.getImplements());
 						        //Class_Names.add(n.getName());
 						        
 						        Class_Names.add(n.getName());

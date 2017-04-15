@@ -33,34 +33,40 @@ public class App
 	    	//String result = "@startuml"+"Object <|-- ArrayList"+"Object : equals()"+"ArrayList : Object[] elementData"+"ArrayList : size()"+"@enduml";
 	        File projectDir = new File("Test Case 1");
 	        Class_Structure getclassnames = new Class_Structure();
-	        File Class_names[] = projectDir.listFiles((File pathName) -> pathName.getName().endsWith(".java"));
+	       // File Class_names[] = projectDir.listFiles((File pathName) -> pathName.getName().endsWith(".java"));
 	        //System.out.println(fileTemp[0	]);
-	        Class_Names = getclassnames.getClasses(projectDir);
+	      //  Class_Names = getclassnames.getClasses(projectDir);
+	        File fileTemp[] = projectDir.listFiles((File pathName) -> pathName.getName().endsWith(".java"));
+			CompilationUnit cUnit[] = new CompilationUnit[fileTemp.length];
 	        //System.out.println(Class_Names);
 	        //System.out.println(Class_Names);
-	        /*for(String x: Class_Names){
+//	        int s = Class_Names.size();
+//	        CompilationUnit cu = new CompilationUnit();
+	       // for(int i = 0; i<s;i++){
 	        	//System.out.println(x);
-	        		FileInputStream in;
-						try {
-							in = new FileInputStream(x);
-
-				            try {
-			//					CompilationUnit cu = JavaParser.parse(in);
-				//				new GettingClassNames().visit(cu,null);
-							} catch (ParseException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						} catch (FileNotFoundException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-			            // parse it
+	        		//FileInputStream in;
+			/*				in = new FileInputStream();
+							
+								CompilationUnit cunit = JavaParser.parse(in);
+			*/		//			new GettingClassNames().visit(cu,null);
 
 			            // visit and print the mesthods names
 			           // new MethodVisitor().visit(cu, null);
 			    
 
-	        }
-*/	    }
+	        //}
+			try{
+				//parse all JAVA files
+				for(int index=0; index < cUnit.length; index++){
+					 cUnit[index] = JavaParser.parse(fileTemp[index]);
+				}
+			}catch(Exception e){
+				System.out.println("Exception Occurred :: " + e.getMessage());
+				e.printStackTrace();
+			}
+			
+			for(int in = 0; in < cUnit.length; in++){
+				new ClassVisitor().visit(cUnit[in], null);
+			}
+	    }
 	}

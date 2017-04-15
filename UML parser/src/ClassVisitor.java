@@ -20,11 +20,12 @@ public class ClassVisitor extends VoidVisitorAdapter {
 		
 		//Getting Class Name
 		name = classDeclaration.getName();
-		
+		System.out.println(classDeclaration.getName());
 		//Getting Extended Base Classes
 		List<ClassOrInterfaceType> extended = classDeclaration.getExtends();
 		if(extended != null){
 			for(ClassOrInterfaceType temp : extended){
+				System.out.println(temp.getName());
 				extend.add(temp.getName());
 			}
 		}
@@ -58,7 +59,7 @@ public class ClassVisitor extends VoidVisitorAdapter {
 		tempClass.setConstructorList(new ArrayList<ConstructorModel>());
 		tempClass.setMethodCall(new HashMap<String, String>());
 		
-		StaticClass.classList.add(tempClass);
+	//	StaticClass.classList.add(tempClass);
 	}
 
 }
