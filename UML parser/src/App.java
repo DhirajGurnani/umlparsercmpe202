@@ -28,7 +28,7 @@ import com.google.common.base.Strings;
  */
 public class App 
 {
-	//    public static void main(String[] args) {
+	    public static void main(String[] args) {
 	    	 ArrayList<String> Class_Names = new ArrayList<String>();
 	    	//String result = "@startuml"+"Object <|-- ArrayList"+"Object : equals()"+"ArrayList : Object[] elementData"+"ArrayList : size()"+"@enduml";
 	        File projectDir = new File("Test Case 1");
@@ -62,5 +62,5 @@ public class App
 			    
 
 	        }
-	  //  }
+	    }
 	}
