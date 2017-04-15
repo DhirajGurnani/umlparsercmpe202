@@ -35,18 +35,18 @@ public class App
 	        Class_Structure getclassnames = new Class_Structure();
 	        File Class_names[] = projectDir.listFiles((File pathName) -> pathName.getName().endsWith(".java"));
 	        //System.out.println(fileTemp[0	]);
-	        //Class_Names = getclassnames.getClasses(projectDir);
+	        Class_Names = getclassnames.getClasses(projectDir);
 	        //System.out.println(Class_Names);
 	        //System.out.println(Class_Names);
-	        for(String x: Class_Names){
+	        /*for(String x: Class_Names){
 	        	//System.out.println(x);
 	        		FileInputStream in;
 						try {
 							in = new FileInputStream(x);
 
 				            try {
-								CompilationUnit cu = JavaParser.parse(in);
-								new GettingClassNames().visit(cu,null);
+			//					CompilationUnit cu = JavaParser.parse(in);
+				//				new GettingClassNames().visit(cu,null);
 							} catch (ParseException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
@@ -62,5 +62,5 @@ public class App
 			    
 
 	        }
-	    }
+*/	    }
 	}

@@ -8,7 +8,7 @@ import com.google.common.base.Strings;
 
 
 public class GettingClassNames extends VoidVisitorAdapter{
-/*    static ArrayList<String> Class_Names = new ArrayList<String>();
+    static ArrayList<String> Class_Names = new ArrayList<String>();
     static ArrayList<String> Extended_Class_Names = new ArrayList<String>();
     static ArrayList<String> Child_Class_Names = new ArrayList<String>();
     static ArrayList<String> Parent_Class_Names = new ArrayList<String>();
@@ -24,9 +24,9 @@ public class GettingClassNames extends VoidVisitorAdapter{
 					    @Override
 					    public void visit(ClassOrInterfaceDeclaration n, Object arg) {
 					        super.visit(n, arg);
-					        
+					        System.out.println("dkbfibadojbfobdo");
 					    
-					        //System.out.println(" * " + n.getNameAsString());
+					        System.out.println(" * " + n.getNameAsString());
 					        //Class_Names.add(n.getName());
 					        Class_Names.add(n.getNameAsString());
 					        
@@ -46,10 +46,10 @@ public class GettingClassNames extends VoidVisitorAdapter{
         
         
     }
-*/
-	@Override
+
+	/*@Override
 	public void visit(ClassOrInterfaceDeclaration classDeclaration, Object obj){
 		System.out.println(classDeclaration.getNameAsString());
-	}
+	}*/
 	//}
 	}
