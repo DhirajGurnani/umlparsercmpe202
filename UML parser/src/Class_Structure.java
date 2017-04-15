@@ -1,9 +1,10 @@
+import japa.parser.JavaParser;
+import japa.parser.ast.body.ClassOrInterfaceDeclaration;
+import japa.parser.ast.visitor.VoidVisitorAdapter;
+
 import java.io.File;
 import java.util.ArrayList;
 
-import com.github.javaparser.JavaParser;
-import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
-import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
 
 public class Class_Structure {
@@ -24,9 +25,10 @@ public class Class_Structure {
 						        super.visit(n, arg);
 						        
 						    
-						        //System.out.println(" * " + n.getNameAsString());
+						        System.out.println(" * " + n.getName());
 						        //Class_Names.add(n.getName());
-						        Class_Names.add(n.getNameAsString());
+						        
+						        Class_Names.add(n.getName());
 						        
 						        //String s = (() n.getName()).getSimpleName();
 						        //System.out.println(" * get members" + n.getMembers());
