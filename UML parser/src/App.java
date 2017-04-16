@@ -71,6 +71,7 @@ public class App
 			for(int in = 0; in < cUnit.length; in++){
 				new MethodVisitor().visit(cUnit[in], null);
 				new ClassVisitor().visit(cUnit[in], null);
+				new field_information_fetcher().visit(cUnit[in], null);
 			}
 	    }
 	}
