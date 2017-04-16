@@ -33,10 +33,13 @@ public class App
 	    	//String result = "@startuml"+"Object <|-- ArrayList"+"Object : equals()"+"ArrayList : Object[] elementData"+"ArrayList : size()"+"@enduml";
 	        File projectDir = new File("Test Case 1");
 	        Class_Structure getclassnames = new Class_Structure();
+	        MethodVisitor getting_method_information = new MethodVisitor();
 	       // File Class_names[] = projectDir.listFiles((File pathName) -> pathName.getName().endsWith(".java"));
 	        //System.out.println(fileTemp[0	]);
 	        Class_Names = getclassnames.getClasses(projectDir);
+	        //getting_method_information.visit(, arg);
 	        File fileTemp[] = projectDir.listFiles((File pathName) -> pathName.getName().endsWith(".java"));
+	        
 			CompilationUnit cUnit[] = new CompilationUnit[fileTemp.length];
 	        //System.out.println(Class_Names);
 	        //System.out.println(Class_Names);
@@ -66,7 +69,8 @@ public class App
 			}
 			
 			for(int in = 0; in < cUnit.length; in++){
-			//	new ClassVisitor().visit(cUnit[in], null);
+				new MethodVisitor().visit(cUnit[in], null);
+				new ClassVisitor().visit(cUnit[in], null);
 			}
 	    }
 	}
