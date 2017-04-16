@@ -15,8 +15,8 @@ public class Class_Structure {
 	  static ArrayList<String> Attribute_Names = new ArrayList<String>();
 	  
 		public static ArrayList getClasses(File projectDir) {
-			ArrayList<String> extend = new ArrayList<String>();
-			ArrayList<String> interfaces = new ArrayList<String>();
+			ArrayList<String> parent_class = new ArrayList<String>();
+			ArrayList<String> interfaces_names = new ArrayList<String>();
 			
 	        new DirExplorer((level, path, file) -> path.endsWith(".java"), (level, path, file) -> {
 	        	
@@ -30,13 +30,20 @@ public class Class_Structure {
 						        super.visit(n, arg);
 						        
 			
-						        List<ClassOrInterfaceType> iFace = n.getExtends();
-								if(iFace != null){
-									for(ClassOrInterfaceType temp :iFace ){
-										System.out.println("iabbwoubuobo");
-										interfaces.add(temp.getName());
+						        List<ClassOrInterfaceType> interface_list = n.getImplements();
+								if( interface_list != null){
+									for(ClassOrInterfaceType a : interface_list){
+										interfaces_names.add(a.getName());
 									}
 								}
+								
+								List<ClassOrInterfaceType> parent_list = n.getImplements();
+								if( parent_list != null){
+									for(ClassOrInterfaceType a : parent_list){
+										parent_class.add(a.getName());
+									}
+								}
+								
 //						        System.out.println(n.getName() + " * " + n.getExtends()+" * "+n.getImplements());
 						        //Class_Names.add(n.getName());
 						        

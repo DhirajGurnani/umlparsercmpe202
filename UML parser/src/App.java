@@ -35,7 +35,7 @@ public class App
 	        Class_Structure getclassnames = new Class_Structure();
 	       // File Class_names[] = projectDir.listFiles((File pathName) -> pathName.getName().endsWith(".java"));
 	        //System.out.println(fileTemp[0	]);
-	      //  Class_Names = getclassnames.getClasses(projectDir);
+	        Class_Names = getclassnames.getClasses(projectDir);
 	        File fileTemp[] = projectDir.listFiles((File pathName) -> pathName.getName().endsWith(".java"));
 			CompilationUnit cUnit[] = new CompilationUnit[fileTemp.length];
 	        //System.out.println(Class_Names);
