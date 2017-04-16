@@ -44,7 +44,7 @@ public class Class_Structure {
 									}
 								}
 								
-//						        System.out.println(n.getName() + " * " + n.getExtends()+" * "+n.getImplements());
+						        System.out.println(n.getName() + " * " + n.getExtends()+" * "+n.getImplements());
 						        //Class_Names.add(n.getName());
 						        
 						        Class_Names.add(n.getName());

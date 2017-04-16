@@ -66,7 +66,7 @@ public class App
 			}
 			
 			for(int in = 0; in < cUnit.length; in++){
-				new ClassVisitor().visit(cUnit[in], null);
+			//	new ClassVisitor().visit(cUnit[in], null);
 			}
 	    }
 	}
