@@ -6,10 +6,10 @@ public class field_information_fetcher extends VoidVisitorAdapter{
 
 	@Override
 	public void visit(FieldDeclaration n, Object obj){
-		System.out.println("-----------------------------------------------------");
+	/*	System.out.println("-----------------------------------------------------");
 		System.out.println(n.getVariables());
 		System.out.println(n.getModifiers());
 		System.out.println(n.getType());
-	}
+	*/}
 
 }
