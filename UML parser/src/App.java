@@ -35,34 +35,13 @@ public class App
 {
 	    public static void main(String[] args) {
 	    	 ArrayList<String> Class_Names = new ArrayList<String>();
-	    	//String result = "@startuml"+"Object <|-- ArrayList"+"Object : equals()"+"ArrayList : Object[] elementData"+"ArrayList : size()"+"@enduml";
 	        File projectDir = new File("Test Case 1");
 	        Class_Structure getclassnames = new Class_Structure();
 	        MethodVisitor getting_method_information = new MethodVisitor();
-	       // File Class_names[] = projectDir.listFiles((File pathName) -> pathName.getName().endsWith(".java"));
-	        //System.out.println(fileTemp[0	]);
 	        Class_Names = getclassnames.getClasses(projectDir);
-	        //getting_method_information.visit(, arg);
 	        File fileTemp[] = projectDir.listFiles((File pathName) -> pathName.getName().endsWith(".java"));
 	        
 			CompilationUnit cUnit[] = new CompilationUnit[fileTemp.length];
-	        //System.out.println(Class_Names);
-	        //System.out.println(Class_Names);
-//	        int s = Class_Names.size();
-//	        CompilationUnit cu = new CompilationUnit();
-	       // for(int i = 0; i<s;i++){
-	        	//System.out.println(x);
-	        		//FileInputStream in;
-			/*				in = new FileInputStream();
-							
-								CompilationUnit cunit = JavaParser.parse(in);
-			*/		//			new GettingClassNames().visit(cu,null);
-
-			            // visit and print the mesthods names
-			           // new MethodVisitor().visit(cu, null);
-			    
-
-	        //}
 			try{
 				//parse all JAVA files
 				for(int index=0; index < cUnit.length; index++){
@@ -82,11 +61,11 @@ public class App
 			try {
 				png = new FileOutputStream("output.png");
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			String source = "@startuml\n";
-			source += "Bobo -> Alice : hello\n";
+			for(String x : getclassnames.Class_Names)
+			source += "class "+ x +"\n";
 			source += "@enduml\n";
 
 			SourceStringReader reader = new SourceStringReader(source);
