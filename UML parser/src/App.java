@@ -72,6 +72,7 @@ public class App
 			
 			for(String y: a.Variable_Names)
 				source +=  y +"\n";
+			source += "+testmethod() : void\n";
 			source += "}\n";
 			}
 			
