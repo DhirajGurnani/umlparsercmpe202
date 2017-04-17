@@ -51,12 +51,14 @@ public class App
 				System.out.println("Exception Occurred :: " + e.getMessage());
 				e.printStackTrace();
 			}
+			field_information_fetcher a = new field_information_fetcher();
+			a.visit(cUnit[0], null);
 			
-			for(int in = 0; in < cUnit.length; in++){
+			/*for(int in = 0; in < cUnit.length; in++){
 				new MethodVisitor().visit(cUnit[in], null);
 			//	new ClassVisitor().visit(cUnit[in], null);
 				new field_information_fetcher().visit(cUnit[in], null);
-			}
+			}*/
 			OutputStream png = null;
 			try {
 				png = new FileOutputStream("output.png");
@@ -64,8 +66,15 @@ public class App
 				e.printStackTrace();
 			}
 			String source = "@startuml\n";
-			for(String x : getclassnames.Class_Names)
-			source += "class "+ x +"\n";
+			source += "skinparam classAttributeIconSize 0\n";
+			for(String x : getclassnames.Class_Names){
+			source += "class "+ x +"{\n";
+			
+			for(String y: a.Variable_Names)
+				source +=  y +"\n";
+			source += "}\n";
+			}
+			
 			source += "@enduml\n";
 
 			SourceStringReader reader = new SourceStringReader(source);
@@ -73,7 +82,6 @@ public class App
 			try {
 				String desc = reader.generateImage(png);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			// Return a null string if no generation
