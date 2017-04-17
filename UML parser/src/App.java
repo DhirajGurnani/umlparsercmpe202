@@ -13,11 +13,16 @@ import japa.parser.ast.body.MethodDeclaration;
 import japa.parser.ast.body.Parameter;
 import japa.parser.ast.type.ClassOrInterfaceType;
 import japa.parser.ast.visitor.VoidVisitorAdapter ;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
+
+import net.sourceforge.plantuml.SourceStringReader;
 
 import com.google.common.base.Strings;
 
@@ -73,5 +78,25 @@ public class App
 			//	new ClassVisitor().visit(cUnit[in], null);
 				new field_information_fetcher().visit(cUnit[in], null);
 			}
+			OutputStream png = null;
+			try {
+				png = new FileOutputStream("output.png");
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			String source = "@startuml\n";
+			source += "Bobo -> Alice : hello\n";
+			source += "@enduml\n";
+
+			SourceStringReader reader = new SourceStringReader(source);
+			// Write the first image to "png"
+			try {
+				String desc = reader.generateImage(png);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			// Return a null string if no generation
 	    }
 	}
