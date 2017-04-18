@@ -1,11 +1,12 @@
-import java.util.ArrayList;
-
 import japa.parser.ast.body.FieldDeclaration;
 import japa.parser.ast.visitor.VoidVisitorAdapter;
 
+import java.util.ArrayList;
 
-public class field_information_fetcher extends VoidVisitorAdapter{
-	   ArrayList<String> Variable_Names = new ArrayList<String>();
+
+public class getting_variable_information extends VoidVisitorAdapter{
+	   public ArrayList<String> Variable_Names = new ArrayList<String>();
+	   public String Association;
 	  int index = 0;
 	@Override
 	public void visit(FieldDeclaration n, Object obj){
@@ -21,15 +22,17 @@ public class field_information_fetcher extends VoidVisitorAdapter{
 				temp = "+" + temp + " : " + n.getType();
 			}
 			
+			
 			Variable_Names.add(temp);
 				
 		}
 		
 		
+		
 	}
 	
-	public void empty_list(){
+/*	public void empty_list(){
 		Variable_Names.removeAll(Variable_Names);
 	}
-
+*/
 }

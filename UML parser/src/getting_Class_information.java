@@ -7,9 +7,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-public class Class_Structure {
+public class getting_Class_information  {
 	  static ArrayList<String> Class_Names = new ArrayList<String>();
 	  static ArrayList<String> Method_Names = new ArrayList<String>();
 	  static ArrayList<String> Attribute_Names = new ArrayList<String>();

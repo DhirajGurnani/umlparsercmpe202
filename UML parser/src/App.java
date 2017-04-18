@@ -36,8 +36,8 @@ public class App
 	    public static void main(String[] args) {
 	    	 ArrayList<String> Class_Names = new ArrayList<String>();
 	        File projectDir = new File("Test Case 1");
-	        Class_Structure getclassnames = new Class_Structure();
-	        MethodVisitor getting_method_information = new MethodVisitor();
+	        getting_Class_information getclassnames = new getting_Class_information();
+	        //MethodVisitor getting_method_information = new MethodVisitor();
 	        Class_Names = getclassnames.getClasses(projectDir);
 	        File fileTemp[] = projectDir.listFiles((File pathName) -> pathName.getName().endsWith(".java"));
 	        
@@ -75,9 +75,9 @@ public class App
 			System.out.println(w_3.Variable_Names);			
 			w_3.empty_list();
 */			
-			field_information_fetcher[] a = new field_information_fetcher[cUnit.length];
+			getting_variable_information[] a = new getting_variable_information[cUnit.length];
 			for (int i = 0;i<cUnit.length;i++){
-			 a[i] = new field_information_fetcher();
+			 a[i] = new getting_variable_information();
 			}
 			for (int i = 0;i<cUnit.length;i++){
 				a[i].visit(cUnit[i], null);
@@ -87,7 +87,7 @@ public class App
 			}*/
 			
 			for(int in = 0; in < cUnit.length; in++){
-			//	new MethodVisitor().visit(cUnit[in], null);
+				new getting_function_information().visit(cUnit[in], null);
 			//	new ClassVisitor().visit(cUnit[in], null);
 			/*	field_information_fetcher a = new field_information_fetcher();
 				a.visit(cUnit[in], null);
@@ -114,7 +114,6 @@ public class App
 			for(String y: a[i].Variable_Names)
 				source +=  y +"\n";
 				
-			source += "+testmethod() : void\n";
 			source += "}\n";
 			i++;
 			}
