@@ -6,15 +6,14 @@ import japa.parser.ast.visitor.VoidVisitorAdapter;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class getting_Class_information  {
-	  static ArrayList<String> Class_Names = new ArrayList<String>();
-	  static ArrayList<String> Method_Names = new ArrayList<String>();
-	  static ArrayList<String> Attribute_Names = new ArrayList<String>();
+	  public static Vector Class_Names = new Vector();
 	  
-		public static ArrayList getClasses(File projectDir) {
-			ArrayList<String> parent_class = new ArrayList<String>();
-			ArrayList<String> interfaces_names = new ArrayList<String>();
+		public static Vector getClasses(File projectDir) {
+			Vector parent_class = new Vector();
+			Vector interfaces_names = new Vector();
 			
 	        new DirExplorer((level, path, file) -> path.endsWith(".java"), (level, path, file) -> {
 	        	

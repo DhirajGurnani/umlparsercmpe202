@@ -2,10 +2,11 @@ import japa.parser.ast.body.FieldDeclaration;
 import japa.parser.ast.visitor.VoidVisitorAdapter;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 
 public class getting_variable_information extends VoidVisitorAdapter{
-	   public ArrayList<String> Variable_Names = new ArrayList<String>();
+	   public Vector<storing_variable_information> Variable_Names = new Vector<storing_variable_information>();
 	   public String Association;
 	  int index = 0;
 	@Override
@@ -16,14 +17,17 @@ public class getting_variable_information extends VoidVisitorAdapter{
 		System.out.println(n.getType());
 		*/String temp = String.valueOf(n.getVariables().get(0));
 		if(n.getModifiers() == 4 || n.getModifiers() == 1){
+			storing_variable_information temp_variable = new storing_variable_information();
 			if(n.getModifiers() == 4){
-				temp = "-" + temp + " : " + n.getType();
+				temp_variable.modifier = "-";// + temp + " : " + n.getType();
 			} else {
-				temp = "+" + temp + " : " + n.getType();
+				temp_variable.modifier = "+" ;//+ temp + " : " + n.getType();
 			}
 			
-			
-			Variable_Names.add(temp);
+			temp_variable.name = temp;
+			temp_variable.type = String.valueOf(n.getType());
+			System.out.println(getting_Class_information.Class_Names);
+			Variable_Names.add(temp_variable);
 				
 		}
 		

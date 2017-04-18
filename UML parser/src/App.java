@@ -111,9 +111,9 @@ public class App
 			for(String x : getclassnames.Class_Names){
 			source += "class "+ x +"{\n";
 			
-			for(String y: a[i].Variable_Names)
+			/*for(String y: a[i].Variable_Names)
 				source +=  y +"\n";
-				
+			*/	
 			source += "}\n";
 			i++;
 			}
