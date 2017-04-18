@@ -51,14 +51,54 @@ public class App
 				System.out.println("Exception Occurred :: " + e.getMessage());
 				e.printStackTrace();
 			}
-			field_information_fetcher a = new field_information_fetcher();
-			a.visit(cUnit[0], null);
 			
-			/*for(int in = 0; in < cUnit.length; in++){
-				new MethodVisitor().visit(cUnit[in], null);
-			//	new ClassVisitor().visit(cUnit[in], null);
-				new field_information_fetcher().visit(cUnit[in], null);
+/*			field_information_fetcher w = new field_information_fetcher();
+			w.visit(cUnit[0], null);
+			field_information_fetcher w_1 = new field_information_fetcher();			
+			System.out.println(w.Variable_Names);
+			System.out.println("------------------------------------------------");
+			w.empty_list();
+			
+			w_1.visit(cUnit[1], null);
+			field_information_fetcher w_2 = new field_information_fetcher();			
+			System.out.println(w_1.Variable_Names);
+			System.out.println("------------------------------------------------");			
+			w_1.empty_list();
+			
+			w_2.visit(cUnit[2], null);
+			field_information_fetcher w_3 = new field_information_fetcher();
+			System.out.println(w_2.Variable_Names);
+			System.out.println("------------------------------------------------");			
+			w_2.empty_list();
+			
+			w_3.visit(cUnit[3], null);
+			System.out.println(w_3.Variable_Names);			
+			w_3.empty_list();
+*/			
+			field_information_fetcher[] a = new field_information_fetcher[cUnit.length];
+			for (int i = 0;i<cUnit.length;i++){
+			 a[i] = new field_information_fetcher();
+			}
+			for (int i = 0;i<cUnit.length;i++){
+				a[i].visit(cUnit[i], null);
+			}
+			/*for (int i = 0;i<cUnit.length;i++){
+				System.out.println(a[i].Variable_Names);
 			}*/
+			
+			for(int in = 0; in < cUnit.length; in++){
+			//	new MethodVisitor().visit(cUnit[in], null);
+			//	new ClassVisitor().visit(cUnit[in], null);
+			/*	field_information_fetcher a = new field_information_fetcher();
+				a.visit(cUnit[in], null);
+				a.empty_list();
+			*/}
+			
+//			for (int i = 0;i<cUnit.length;i++){
+//				System.out.println(a[i].Variable_Names);
+//				System.out.println("---------------------------------------------");
+//			}
+			
 			OutputStream png = null;
 			try {
 				png = new FileOutputStream("output.png");
@@ -67,13 +107,16 @@ public class App
 			}
 			String source = "@startuml\n";
 			source += "skinparam classAttributeIconSize 0\n";
+			int i = 0;
 			for(String x : getclassnames.Class_Names){
 			source += "class "+ x +"{\n";
 			
-			for(String y: a.Variable_Names)
+			for(String y: a[i].Variable_Names)
 				source +=  y +"\n";
+				
 			source += "+testmethod() : void\n";
 			source += "}\n";
+			i++;
 			}
 			
 			source += "@enduml\n";
@@ -88,3 +131,4 @@ public class App
 			// Return a null string if no generation
 	    }
 	}
+//}
