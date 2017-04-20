@@ -7,5 +7,8 @@ public class storing_class_information {
 	public boolean does_extend = false;
 	public Vector<String> extending_class = new Vector<String>();
 	public Vector<storing_function_information> Functions = new Vector<storing_function_information>();
-
+	public boolean does_interface = false;
+	public Vector<String> implementing = new Vector<String>();
+	public boolean is_interface = false;
+	
 	}

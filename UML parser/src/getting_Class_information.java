@@ -26,6 +26,17 @@ public class getting_Class_information  extends VoidVisitorAdapter {
 				//parent_class.add(a.getName());
 			}
 		}
+		New_class.is_interface = n.isInterface();
+		List<ClassOrInterfaceType> interface_list = n.getImplements();
+		if( interface_list != null){
+			for(ClassOrInterfaceType a : interface_list){
+				New_class.does_interface = true;
+//				System.out.println(a.getName());
+//				System.out.println(n.getName()+"================");
+				New_class.implementing.add(a.getName());
+				//parent_class.add(a.getName());
+			}
+		}
 		
 		storing_all_classes.Classes.addElement(New_class);
 	}

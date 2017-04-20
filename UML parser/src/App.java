@@ -40,7 +40,7 @@ public class App
 {
 	    public static void main(String[] args) {
 	    	 ArrayList<String> Class_Names = new ArrayList<String>();
-	        File projectDir = new File("Test Case 3");
+	        File projectDir = new File("Test Case 5");
 	        getting_Class_information getclassnames = new getting_Class_information();
 	        //MethodVisitor getting_method_information = new MethodVisitor();
 	        //Class_Names = getclassnames.getClasses(projectDir);
@@ -137,7 +137,14 @@ public class App
 					for(int extend_class_index = 0; extend_class_index< disp_class.extending_class.size();extend_class_index++)
 					source += disp_class.extending_class.get(extend_class_index)+"  ^-- "+ disp_class.Name +" \n";
 				
-				source += "class "+ storing_all_classes.Classes.get(class_index).Name +" {\n";
+				if(disp_class.does_interface)
+					for(int interface_class_index = 0; interface_class_index < disp_class.implementing.size(); interface_class_index++)
+						source += disp_class.implementing.get(interface_class_index) + " <|.. " + disp_class.Name + " \n";
+				
+				source += "class "+ storing_all_classes.Classes.get(class_index).Name;
+				if(disp_class.is_interface)
+					source += " <<interface>> ";
+				source += " {\n";
 				for(int variable_index = 0; variable_index < disp_class.Variables.size(); variable_index++){
 					storing_variable_information disp_variable = new storing_variable_information();
 					disp_variable = disp_class.Variables.get(variable_index);
