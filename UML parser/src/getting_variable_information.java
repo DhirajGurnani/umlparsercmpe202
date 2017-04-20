@@ -26,8 +26,9 @@ public class getting_variable_information extends VoidVisitorAdapter{
 			
 			temp_variable.name = temp;
 			temp_variable.type = String.valueOf(n.getType());
-			System.out.println(getting_Class_information.Class_Names);
-			Variable_Names.add(temp_variable);
+			//System.out.println(getting_Class_information.Class_Names);
+//			System.out.println(storing_all_classes.Class_active + " + " + n.getVariables());
+			storing_all_classes.Classes.get(storing_all_classes.Class_active).Variables.addElement(temp_variable);
 				
 		}
 		

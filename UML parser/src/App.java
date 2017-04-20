@@ -38,7 +38,7 @@ public class App
 	        File projectDir = new File("Test Case 1");
 	        getting_Class_information getclassnames = new getting_Class_information();
 	        //MethodVisitor getting_method_information = new MethodVisitor();
-	        Class_Names = getclassnames.getClasses(projectDir);
+	        //Class_Names = getclassnames.getClasses(projectDir);
 	        File fileTemp[] = projectDir.listFiles((File pathName) -> pathName.getName().endsWith(".java"));
 	        
 			CompilationUnit cUnit[] = new CompilationUnit[fileTemp.length];
@@ -50,6 +50,13 @@ public class App
 			}catch(Exception e){
 				System.out.println("Exception Occurred :: " + e.getMessage());
 				e.printStackTrace();
+			}
+			
+			storing_all_classes temp_class = new storing_all_classes();
+			temp_class.Class_active = 0;
+			for(;temp_class.Class_active < cUnit.length; temp_class.Class_active++){
+				new getting_Class_information().visit(cUnit[temp_class.Class_active],null);
+				new getting_variable_information().visit(cUnit[temp_class.Class_active],null);
 			}
 			
 /*			field_information_fetcher w = new field_information_fetcher();
@@ -75,30 +82,33 @@ public class App
 			System.out.println(w_3.Variable_Names);			
 			w_3.empty_list();
 */			
-			getting_variable_information[] a = new getting_variable_information[cUnit.length];
+			/*getting_variable_information[] a = new getting_variable_information[cUnit.length];
 			for (int i = 0;i<cUnit.length;i++){
 			 a[i] = new getting_variable_information();
 			}
 			for (int i = 0;i<cUnit.length;i++){
 				a[i].visit(cUnit[i], null);
-			}
+			}*/
 			/*for (int i = 0;i<cUnit.length;i++){
 				System.out.println(a[i].Variable_Names);
 			}*/
 			
-			for(int in = 0; in < cUnit.length; in++){
+			/*for(int in = 0; in < cUnit.length; in++){
 				new getting_function_information().visit(cUnit[in], null);
 			//	new ClassVisitor().visit(cUnit[in], null);
-			/*	field_information_fetcher a = new field_information_fetcher();
+				field_information_fetcher a = new field_information_fetcher();
 				a.visit(cUnit[in], null);
 				a.empty_list();
-			*/}
-			
+			}
+			*/
 //			for (int i = 0;i<cUnit.length;i++){
 //				System.out.println(a[i].Variable_Names);
 //				System.out.println("---------------------------------------------");
 //			}
 			
+			Association_tester association = new Association_tester();
+			association.check();
+			//System.out.println(association.all_association);
 			OutputStream png = null;
 			try {
 				png = new FileOutputStream("output.png");
@@ -107,16 +117,47 @@ public class App
 			}
 			String source = "@startuml\n";
 			source += "skinparam classAttributeIconSize 0\n";
-			int i = 0;
-			for(String x : getclassnames.Class_Names){
+			//int i = 0;
+			for(int association_index = 0;association_index < association.all_association.size(); association_index++){
+				source += association.all_association.get(association_index).x+" \""+association.all_association.get(association_index).xtoy+"\" -- \""+association.all_association.get(association_index).ytox+"\" "+association.all_association.get(association_index).y+"\n";
+			}
+/*			source += "a -- b \n";
+			source += "b -- a \n";
+*/			for(int class_index = 0; class_index< storing_all_classes.Classes.size(); class_index++){
+				
+				storing_class_information disp_class = new storing_class_information();
+				disp_class = storing_all_classes.Classes.get(class_index);
+				source += "class "+ storing_all_classes.Classes.get(class_index).Name +" {\n";
+				for(int variable_index = 0; variable_index < disp_class.Variables.size(); variable_index++){
+					storing_variable_information disp_variable = new storing_variable_information();
+					disp_variable = disp_class.Variables.get(variable_index);
+					if(!disp_variable.association){
+						source += disp_variable.modifier + disp_variable.name + " : " + disp_variable.type + "\n";
+					}
+				}
+				
+				source += "} \n";
+				
+				System.out.println("class "+ storing_all_classes.Classes.get(class_index).Name +"\n");
+			}
+/*			source += "class a { \n";
+			source += "int x \n";
+			
+			source += "} \n";
+			source += "class b {\n";
+			source += "int y \n";
+			
+			source += "} \n";
+*/			
+			/*for(String x : getclassnames.Class_Names){
 			source += "class "+ x +"{\n";
 			
-			/*for(String y: a[i].Variable_Names)
+			for(String y: a[i].Variable_Names)
 				source +=  y +"\n";
-			*/	
+				
 			source += "}\n";
 			i++;
-			}
+			}*/
 			
 			source += "@enduml\n";
 

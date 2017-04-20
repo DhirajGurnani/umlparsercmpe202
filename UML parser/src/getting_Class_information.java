@@ -1,6 +1,6 @@
-import japa.parser.JavaParser;
+
 import japa.parser.ast.body.ClassOrInterfaceDeclaration;
-import japa.parser.ast.type.ClassOrInterfaceType;
+import japa.parser.ast.body.FieldDeclaration;
 import japa.parser.ast.visitor.VoidVisitorAdapter;
 
 import java.io.File;
@@ -8,8 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-public class getting_Class_information  {
-	  public static Vector Class_Names = new Vector();
+public class getting_Class_information  extends VoidVisitorAdapter {
+	@Override	
+	public void visit(ClassOrInterfaceDeclaration n, Object obj){
+		storing_class_information New_class = new storing_class_information();
+		New_class.Name = n.getName();
+		storing_all_classes.Classes.addElement(New_class);
+	}
+	
+}
+/*	  public static Vector Class_Names = new Vector();
 	  
 		public static Vector getClasses(File projectDir) {
 			Vector parent_class = new Vector();
@@ -63,4 +71,5 @@ public class getting_Class_information  {
 	        
 	    }
 
-}
+*/
+
