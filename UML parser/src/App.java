@@ -40,7 +40,7 @@ public class App
 {
 	    public static void main(String[] args) {
 	    	 ArrayList<String> Class_Names = new ArrayList<String>();
-	        File projectDir = new File("Test Case 5");
+	        File projectDir = new File("uml-parser-test-3");
 	        getting_Class_information getclassnames = new getting_Class_information();
 	        //MethodVisitor getting_method_information = new MethodVisitor();
 	        //Class_Names = getclassnames.getClasses(projectDir);
@@ -114,6 +114,9 @@ public class App
 			
 			Association_tester association = new Association_tester();
 			association.check();
+			dependencies_testing dependencies = new dependencies_testing();
+			dependencies.check();
+			System.out.println(dependencies.all_dependencies);
 			//System.out.println(association.all_association);
 			OutputStream png = null;
 			try {
@@ -126,6 +129,11 @@ public class App
 			//int i = 0;
 			for(int association_index = 0;association_index < association.all_association.size(); association_index++){
 				source += association.all_association.get(association_index).x+" \""+association.all_association.get(association_index).xtoy+"\" -- \""+association.all_association.get(association_index).ytox+"\" "+association.all_association.get(association_index).y+"\n";
+			}
+			
+			for(int dependency_index = 0; dependency_index<dependencies.all_dependencies.size(); dependency_index++){
+				source += dependencies.all_dependencies.get(dependency_index).x + " ..> "+ dependencies.all_dependencies.get(dependency_index).y+"\n";
+				System.out.println(";kwbonpirwengpinewngnp");
 			}
 /*			source += "a -- b \n";
 			source += "b -- a \n";

@@ -15,12 +15,23 @@ public class getting_variable_information extends VoidVisitorAdapter{
 		System.out.println(String.valueOf(n.getVariables().get(0)));
 		System.out.println(n.getModifiers());
 		System.out.println(n.getType());
-		*/String temp = String.valueOf(n.getVariables().get(0));
+		
+		*/
+
+		System.out.println(n.getModifiers());
+		String temp = String.valueOf(n.getVariables().get(0));
+		if(temp.equalsIgnoreCase("message")){
+			System.out.println("benchod");
+		}
 		if(n.getModifiers() == 4 || n.getModifiers() == 1){
 			storing_variable_information temp_variable = new storing_variable_information();
 			if(n.getModifiers() == 4){
+				/*if(temp.equalsIgnoreCase("message")){
+					System.out.println();
+				}*/
 				temp_variable.modifier = "-";// + temp + " : " + n.getType();
 			} else {
+				
 				temp_variable.modifier = "+" ;//+ temp + " : " + n.getType();
 			}
 			

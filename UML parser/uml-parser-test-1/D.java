@@ -1,6 +1,6 @@
  
 
-public class D extends A{
+public class D {
  
 	private A a;
 	 
