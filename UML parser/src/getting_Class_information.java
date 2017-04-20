@@ -1,6 +1,7 @@
 
 import japa.parser.ast.body.ClassOrInterfaceDeclaration;
 import japa.parser.ast.body.FieldDeclaration;
+import japa.parser.ast.type.ClassOrInterfaceType;
 import japa.parser.ast.visitor.VoidVisitorAdapter;
 
 import java.io.File;
@@ -13,6 +14,19 @@ public class getting_Class_information  extends VoidVisitorAdapter {
 	public void visit(ClassOrInterfaceDeclaration n, Object obj){
 		storing_class_information New_class = new storing_class_information();
 		New_class.Name = n.getName();
+		
+		
+		List<ClassOrInterfaceType> parent_list = n.getExtends();
+		if( parent_list != null){
+			for(ClassOrInterfaceType a : parent_list){
+				New_class.does_extend = true;
+//				System.out.println(a.getName());
+//				System.out.println(n.getName()+"================");
+				New_class.extending_class.add(a.getName());
+				//parent_class.add(a.getName());
+			}
+		}
+		
 		storing_all_classes.Classes.addElement(New_class);
 	}
 	

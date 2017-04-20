@@ -4,7 +4,7 @@ import java.util.Enumeration;
 public class Association_tester {
 	public Vector<Association_list> all_association = new Vector<Association_list>();
 public void check(){
-	System.out.println("inside");
+	//System.out.println("inside");
 	for(int i = 0;i<storing_all_classes.Classes.size();i++){
 		storing_class_information temp_class = new storing_class_information();
 		temp_class = storing_all_classes.Classes.get(i);

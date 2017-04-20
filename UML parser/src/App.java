@@ -21,10 +21,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.antlr.v4.runtime.misc.FlexibleHashMap;
 
 import net.sourceforge.plantuml.SourceStringReader;
 
 import com.google.common.base.Strings;
+import com.sun.prism.impl.Disposer.Record;
 
 
 /**
@@ -35,7 +40,7 @@ public class App
 {
 	    public static void main(String[] args) {
 	    	 ArrayList<String> Class_Names = new ArrayList<String>();
-	        File projectDir = new File("Test Case 1");
+	        File projectDir = new File("Test Case 3");
 	        getting_Class_information getclassnames = new getting_Class_information();
 	        //MethodVisitor getting_method_information = new MethodVisitor();
 	        //Class_Names = getclassnames.getClasses(projectDir);
@@ -57,6 +62,7 @@ public class App
 			for(;temp_class.Class_active < cUnit.length; temp_class.Class_active++){
 				new getting_Class_information().visit(cUnit[temp_class.Class_active],null);
 				new getting_variable_information().visit(cUnit[temp_class.Class_active],null);
+				new getting_function_information().visit(cUnit[temp_class.Class_active], null);
 			}
 			
 /*			field_information_fetcher w = new field_information_fetcher();
@@ -127,6 +133,10 @@ public class App
 				
 				storing_class_information disp_class = new storing_class_information();
 				disp_class = storing_all_classes.Classes.get(class_index);
+				if(disp_class.does_extend)
+					for(int extend_class_index = 0; extend_class_index< disp_class.extending_class.size();extend_class_index++)
+					source += disp_class.extending_class.get(extend_class_index)+"  ^-- "+ disp_class.Name +" \n";
+				
 				source += "class "+ storing_all_classes.Classes.get(class_index).Name +" {\n";
 				for(int variable_index = 0; variable_index < disp_class.Variables.size(); variable_index++){
 					storing_variable_information disp_variable = new storing_variable_information();
@@ -135,10 +145,25 @@ public class App
 						source += disp_variable.modifier + disp_variable.name + " : " + disp_variable.type + "\n";
 					}
 				}
-				
+				for(int function_index = 0; function_index<disp_class.Functions.size(); function_index++){
+					storing_function_information disp_function = new storing_function_information();
+					disp_function = disp_class.Functions.get(function_index);
+					source += "+ "+disp_function.name+"(";
+					//Map<String, Records> map = HashMap<String, Records>();
+					boolean first_check_param = true;
+					for(Entry<String, String> entry: disp_function.parameters.entrySet()){
+						if(!first_check_param){
+							source += " , ";
+									
+						}
+						source += entry.getKey()+ " : " +entry.getValue();
+						first_check_param = false;
+					}
+					source += ") : "+disp_function.type+"\n";
+				}
 				source += "} \n";
 				
-				System.out.println("class "+ storing_all_classes.Classes.get(class_index).Name +"\n");
+				//System.out.println("class "+ storing_all_classes.Classes.get(class_index).Name +"\n");
 			}
 /*			source += "class a { \n";
 			source += "int x \n";
