@@ -16,13 +16,39 @@ public class getting_function_information  extends VoidVisitorAdapter {
         //System.out.println(n.getType());
         //System.out.println(n.getParameters());
         boolean getset = false;
-        if(n.getModifiers() == 1){
-        	if(n.getName().substring(0, 3).equalsIgnoreCase("get")||n.getName().substring(0, 3).equalsIgnoreCase("set")){
-        		getset = true;
-        	}
-        	if(!getset){
+        //if(n.getModifiers() == 1){
+        //System.out.println(n.getName() +" : "+ n.getModifiers());
+        	
+//        	if(!getset){
         		storing_function_information temp_function = new storing_function_information();
             	temp_function.name = n.getName();            	
+            	
+            	if(n.getName().substring(0, 3).equalsIgnoreCase("get")||n.getName().substring(0, 3).equalsIgnoreCase("set")){
+            		getset = true;
+            		for(int i = 0;i<storing_all_classes.Classes.get(storing_all_classes.Class_active).Variables.size();i++){
+            			storing_variable_information temp_variable = new storing_variable_information();
+            			temp_variable = storing_all_classes.Classes.get(storing_all_classes.Class_active).Variables.get(i);
+            			if(n.getName().substring(3, n.getName().length()).equalsIgnoreCase(temp_variable.name)){
+            				//System.out.println("--------------------------------------------");
+            				temp_function.is_setter_getter = true;
+            				temp_variable.modifier = "+";
+            			}
+            		}
+            	}
+            	if(n.getModifiers() == 4){
+    				/*if(temp.equalsIgnoreCase("message")){
+    					System.out.println();
+    				}*/
+    				temp_function.modifier = "-";// + temp + " : " + n.getType();
+    			} else if (n.getModifiers() == 1) {
+    				
+    				temp_function.modifier = "+" ;//+ temp + " : " + n.getType();
+    			} else if ((n.getModifiers() == 2)){
+    				temp_function.modifier = "#" ;
+    			}else {
+    				temp_function.modifier = "~";
+    			}
+            	
             	temp_function.type = String.valueOf(n.getType());
             	List<Parameter> parameterList = n.getParameters();
             	//System.out.println("lsbgoebdoigbpoiebpigbeipb");
@@ -33,10 +59,11 @@ public class getting_function_information  extends VoidVisitorAdapter {
         				temp_function.parameters.put(paramName, paramType);
         			}
         		}
+        		
         		storing_all_classes.Classes.get(storing_all_classes.Class_active).Functions.addElement(temp_function);
-        	}
+//        	}
         	
-        }
+        //}
         
         
         

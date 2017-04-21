@@ -40,7 +40,7 @@ public class App
 {
 	    public static void main(String[] args) {
 	    	 ArrayList<String> Class_Names = new ArrayList<String>();
-	        File projectDir = new File("uml-parser-test-3");
+	        File projectDir = new File("uml-parser-test-2");
 	        getting_Class_information getclassnames = new getting_Class_information();
 	        //MethodVisitor getting_method_information = new MethodVisitor();
 	        //Class_Names = getclassnames.getClasses(projectDir);
@@ -116,7 +116,7 @@ public class App
 			association.check();
 			dependencies_testing dependencies = new dependencies_testing();
 			dependencies.check();
-			System.out.println(dependencies.all_dependencies);
+			//System.out.println(dependencies.all_dependencies);
 			//System.out.println(association.all_association);
 			OutputStream png = null;
 			try {
@@ -133,7 +133,7 @@ public class App
 			
 			for(int dependency_index = 0; dependency_index<dependencies.all_dependencies.size(); dependency_index++){
 				source += dependencies.all_dependencies.get(dependency_index).x + " ..> "+ dependencies.all_dependencies.get(dependency_index).y+"\n";
-				System.out.println(";kwbonpirwengpinewngnp");
+				//System.out.println(";kwbonpirwengpinewngnp");
 			}
 /*			source += "a -- b \n";
 			source += "b -- a \n";
@@ -157,12 +157,14 @@ public class App
 					storing_variable_information disp_variable = new storing_variable_information();
 					disp_variable = disp_class.Variables.get(variable_index);
 					if(!disp_variable.association){
+						if(disp_variable.modifier.equals("+")||disp_variable.modifier.equals("-"))
 						source += disp_variable.modifier + disp_variable.name + " : " + disp_variable.type + "\n";
 					}
 				}
 				for(int function_index = 0; function_index<disp_class.Functions.size(); function_index++){
 					storing_function_information disp_function = new storing_function_information();
 					disp_function = disp_class.Functions.get(function_index);
+					if(disp_function.modifier.equals("+") && !disp_function.is_setter_getter){
 					source += "+ "+disp_function.name+"(";
 					//Map<String, Records> map = HashMap<String, Records>();
 					boolean first_check_param = true;
@@ -175,6 +177,7 @@ public class App
 						first_check_param = false;
 					}
 					source += ") : "+disp_function.type+"\n";
+					}
 				}
 				source += "} \n";
 				

@@ -18,21 +18,25 @@ public class getting_variable_information extends VoidVisitorAdapter{
 		
 		*/
 
-		System.out.println(n.getModifiers());
+
 		String temp = String.valueOf(n.getVariables().get(0));
-		if(temp.equalsIgnoreCase("message")){
+		//System.out.println(n.getModifiers() + " : " + temp);
+		/*if(temp.equalsIgnoreCase("message")){
 			System.out.println("benchod");
-		}
-		if(n.getModifiers() == 4 || n.getModifiers() == 1){
+		}*/
 			storing_variable_information temp_variable = new storing_variable_information();
 			if(n.getModifiers() == 4){
 				/*if(temp.equalsIgnoreCase("message")){
 					System.out.println();
 				}*/
 				temp_variable.modifier = "-";// + temp + " : " + n.getType();
-			} else {
+			} else if (n.getModifiers() == 1) {
 				
 				temp_variable.modifier = "+" ;//+ temp + " : " + n.getType();
+			} else if ((n.getModifiers() == 2)){
+				temp_variable.modifier = "#" ;
+			}else {
+				temp_variable.modifier = "~";
 			}
 			
 			temp_variable.name = temp;
@@ -41,7 +45,7 @@ public class getting_variable_information extends VoidVisitorAdapter{
 //			System.out.println(storing_all_classes.Class_active + " + " + n.getVariables());
 			storing_all_classes.Classes.get(storing_all_classes.Class_active).Variables.addElement(temp_variable);
 				
-		}
+		
 		
 		
 		
