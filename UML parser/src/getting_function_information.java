@@ -17,7 +17,8 @@ public class getting_function_information  extends VoidVisitorAdapter {
         //System.out.println(n.getParameters());
         boolean getset = false;
         //if(n.getModifiers() == 1){
-        //System.out.println(n.getName() +" : "+ n.getModifiers());
+        System.out.println(storing_all_classes.Classes.get(storing_all_classes.Class_active).Name);
+        System.out.println(n.getName() +" : "+ n.getModifiers());
         	
 //        	if(!getset){
         		storing_function_information temp_function = new storing_function_information();
@@ -48,6 +49,14 @@ public class getting_function_information  extends VoidVisitorAdapter {
     			}else {
     				temp_function.modifier = "~";
     			}
+
+//        		for(int i = 0;i<storing_all_classes.Classes.get(storing_all_classes.Class_active).Functions.size();i++){
+//        			if(storing_all_classes.Classes.get(storing_all_classes.Class_active).is_interface){
+//        				storing_function_information interface_function = new storing_function_information();
+//                		//if()		
+//        			}
+//        		}
+
             	
             	temp_function.type = String.valueOf(n.getType());
             	List<Parameter> parameterList = n.getParameters();

@@ -40,7 +40,7 @@ public class App
 {
 	    public static void main(String[] args) {
 	    	 ArrayList<String> Class_Names = new ArrayList<String>();
-	        File projectDir = new File("uml-parser-test-2");
+	        File projectDir = new File("uml-parser-test-4");
 	        getting_Class_information getclassnames = new getting_Class_information();
 	        //MethodVisitor getting_method_information = new MethodVisitor();
 	        //Class_Names = getclassnames.getClasses(projectDir);
@@ -62,6 +62,7 @@ public class App
 			for(;temp_class.Class_active < cUnit.length; temp_class.Class_active++){
 				new getting_Class_information().visit(cUnit[temp_class.Class_active],null);
 				new getting_variable_information().visit(cUnit[temp_class.Class_active],null);
+				new getting_constructor_information().visit(cUnit[temp_class.Class_active], null);
 				new getting_function_information().visit(cUnit[temp_class.Class_active], null);
 			}
 			
@@ -176,7 +177,10 @@ public class App
 						source += entry.getKey()+ " : " +entry.getValue();
 						first_check_param = false;
 					}
-					source += ") : "+disp_function.type+"\n";
+					source += ") ";
+					if(!disp_function.type.equals(""))
+						source += ": " ;
+					source += disp_function.type+"\n";
 					}
 				}
 				source += "} \n";
