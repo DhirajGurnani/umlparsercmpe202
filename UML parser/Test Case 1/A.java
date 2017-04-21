@@ -8,7 +8,6 @@ public class A {
 	 
 	private int[] y;
 	
-    public ArrayList<Component> components = new ArrayList<Component>()  ;
     
 	private Collection<B> b;
 	 

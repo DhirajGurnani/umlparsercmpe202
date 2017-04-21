@@ -45,7 +45,7 @@ public class App
 	        //MethodVisitor getting_method_information = new MethodVisitor();
 	        //Class_Names = getclassnames.getClasses(projectDir);
 	        File fileTemp[] = projectDir.listFiles((File pathName) -> pathName.getName().endsWith(".java"));
-	        System.out.println(fileTemp);
+	        //System.out.println(fileTemp);
 			CompilationUnit cUnit[] = new CompilationUnit[fileTemp.length];
 			try{
 				//parse all JAVA files
@@ -129,7 +129,13 @@ public class App
 			source += "skinparam classAttributeIconSize 0\n";
 			//int i = 0;
 			for(int association_index = 0;association_index < association.all_association.size(); association_index++){
-				source += association.all_association.get(association_index).x+" \""+association.all_association.get(association_index).xtoy+"\" -- \""+association.all_association.get(association_index).ytox+"\" "+association.all_association.get(association_index).y+"\n";
+				source += association.all_association.get(association_index).x;
+				if(!association.all_association.get(association_index).xtoy.equalsIgnoreCase("0")&&!association.all_association.get(association_index).xtoy.equalsIgnoreCase("1"))
+					source += " \""+association.all_association.get(association_index).xtoy+"\"";
+				source +=" -- ";
+				if(!association.all_association.get(association_index).ytox.equalsIgnoreCase("0")&&!association.all_association.get(association_index).ytox.equalsIgnoreCase("1"))
+					source +="\""+association.all_association.get(association_index).ytox+"\" ";
+				source += association.all_association.get(association_index).y+"\n";
 			}
 			
 			for(int dependency_index = 0; dependency_index<dependencies.all_dependencies.size(); dependency_index++){
@@ -169,6 +175,9 @@ public class App
 						if(disp_function.is_abstract){
 							source += "{abstract} ";
 						}
+						if(disp_function.is_static){
+							source += "{static} ";
+						} 
 					source += "+ "+disp_function.name+"(";
 					//Map<String, Records> map = HashMap<String, Records>();
 					boolean first_check_param = true;

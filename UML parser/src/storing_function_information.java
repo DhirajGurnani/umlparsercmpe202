@@ -8,5 +8,6 @@ public class storing_function_information {
 	public HashMap<String, String> parameters = new HashMap<String,String>();
 	boolean is_setter_getter = false;
 	boolean is_abstract = false;
+	boolean is_static = false;
 	
 }

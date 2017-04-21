@@ -26,7 +26,7 @@ public void check(){
 						for(int l =0 ;l<all_association.size();l++){
 							if(temp_check_class.Name.equals(all_association.get(l).x) && temp_class.Name.equals(all_association.get(l).y)){
 								exist = true;
-								all_association.get(l).ytox = "1";
+								all_association.get(l).xtoy = "1";
 							}
 						}
 						
@@ -34,7 +34,7 @@ public void check(){
 							Association_list temp_association = new Association_list();
 							temp_association.x = temp_class.Name;
 							temp_association.y = temp_check_class.Name;
-							temp_association.xtoy = "1";
+							temp_association.ytox = "1";
 							all_association.addElement(temp_association);
 						}
 						
@@ -51,7 +51,7 @@ public void check(){
 							for(int l =0 ;l<all_association.size();l++){
 								if(temp_check_class.Name.equals(all_association.get(l).x) && temp_class.Name.equals(all_association.get(l).y)){
 									exist = true;
-									all_association.get(l).ytox = "*";
+									all_association.get(l).xtoy = "*";
 								}
 							}
 							
@@ -59,7 +59,7 @@ public void check(){
 								Association_list temp_association = new Association_list();
 								temp_association.x = temp_class.Name;
 								temp_association.y = temp_check_class.Name;
-								temp_association.xtoy = "*";
+								temp_association.ytox = "*";
 								all_association.addElement(temp_association);
 							}
 						}
