@@ -40,7 +40,7 @@ public class App
 {
 	    public static void main(String[] args) {
 	    	 ArrayList<String> Class_Names = new ArrayList<String>();
-	        File projectDir = new File("Test Case 4");
+	        File projectDir = new File("Test Case 1");
 	        getting_Class_information getclassnames = new getting_Class_information();
 	        //MethodVisitor getting_method_information = new MethodVisitor();
 	        //Class_Names = getclassnames.getClasses(projectDir);
