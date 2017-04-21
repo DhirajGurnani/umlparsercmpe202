@@ -40,12 +40,12 @@ public class App
 {
 	    public static void main(String[] args) {
 	    	 ArrayList<String> Class_Names = new ArrayList<String>();
-	        File projectDir = new File("uml-parser-test-4");
+	        File projectDir = new File("Test Case 4");
 	        getting_Class_information getclassnames = new getting_Class_information();
 	        //MethodVisitor getting_method_information = new MethodVisitor();
 	        //Class_Names = getclassnames.getClasses(projectDir);
 	        File fileTemp[] = projectDir.listFiles((File pathName) -> pathName.getName().endsWith(".java"));
-	        
+	        System.out.println(fileTemp);
 			CompilationUnit cUnit[] = new CompilationUnit[fileTemp.length];
 			try{
 				//parse all JAVA files
@@ -166,6 +166,9 @@ public class App
 					storing_function_information disp_function = new storing_function_information();
 					disp_function = disp_class.Functions.get(function_index);
 					if(disp_function.modifier.equals("+") && !disp_function.is_setter_getter){
+						if(disp_function.is_abstract){
+							source += "{abstract} ";
+						}
 					source += "+ "+disp_function.name+"(";
 					//Map<String, Records> map = HashMap<String, Records>();
 					boolean first_check_param = true;

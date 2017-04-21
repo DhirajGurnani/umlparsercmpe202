@@ -46,6 +46,9 @@ public class getting_function_information  extends VoidVisitorAdapter {
     				temp_function.modifier = "+" ;//+ temp + " : " + n.getType();
     			} else if ((n.getModifiers() == 2)){
     				temp_function.modifier = "#" ;
+    			} else if ((n.getModifiers() == 9)){
+    				temp_function.modifier = "+" ;
+    				temp_function.is_abstract = true;
     			}else {
     				temp_function.modifier = "~";
     			}

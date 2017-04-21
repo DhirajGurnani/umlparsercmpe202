@@ -1,4 +1,3 @@
-
 public class ConcreteDecoratorA extends Decorator {
 
 	private String addedState;
