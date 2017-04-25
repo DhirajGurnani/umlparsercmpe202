@@ -17,9 +17,11 @@ public class getting_function_information  extends VoidVisitorAdapter {
         //System.out.println(n.getParameters());
         boolean getset = false;
         //if(n.getModifiers() == 1){
-        System.out.println(storing_all_classes.Classes.get(storing_all_classes.Class_active).Name);
+/*        System.out.println(storing_all_classes.Classes.get(storing_all_classes.Class_active).Name);
         System.out.println(n.getName() +" : "+ n.getModifiers());
-        	
+  */      	
+//        if(n.getName().equals("main"))
+//        System.out.println(n.getBody());
 //        	if(!getset){
         		storing_function_information temp_function = new storing_function_information();
             	temp_function.name = n.getName();            	

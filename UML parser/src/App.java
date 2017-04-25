@@ -40,7 +40,7 @@ public class App
 {
 	    public static void main(String[] args) {
 	    	 ArrayList<String> Class_Names = new ArrayList<String>();
-	        File projectDir = new File("Test Case 1");
+	        File projectDir = new File("Test Case 5");
 	        getting_Class_information getclassnames = new getting_Class_information();
 	        //MethodVisitor getting_method_information = new MethodVisitor();
 	        //Class_Names = getclassnames.getClasses(projectDir);
@@ -65,7 +65,11 @@ public class App
 				new getting_constructor_information().visit(cUnit[temp_class.Class_active], null);
 				new getting_function_information().visit(cUnit[temp_class.Class_active], null);
 			}
-			
+			dependency_in_function_testing depend_function = new dependency_in_function_testing();
+			temp_class.Class_active = 0;
+			for(;temp_class.Class_active < cUnit.length; temp_class.Class_active++)
+				depend_function.visit(cUnit[temp_class.Class_active], null);
+
 /*			field_information_fetcher w = new field_information_fetcher();
 			w.visit(cUnit[0], null);
 			field_information_fetcher w_1 = new field_information_fetcher();			
@@ -142,6 +146,12 @@ public class App
 				source += dependencies.all_dependencies.get(dependency_index).x + " ..> "+ dependencies.all_dependencies.get(dependency_index).y+"\n";
 				//System.out.println(";kwbonpirwengpinewngnp");
 			}
+			
+			for(int dependency_index_1 = 0; dependency_index_1<depend_function.in_function_list.size(); dependency_index_1++){
+				source += depend_function.in_function_list.get(dependency_index_1).x + " ..> "+ depend_function.in_function_list.get(dependency_index_1).y+"\n";
+				//System.out.println(";kwbonpirwengpinewngnp");
+			}
+			
 /*			source += "a -- b \n";
 			source += "b -- a \n";
 */			for(int class_index = 0; class_index< storing_all_classes.Classes.size(); class_index++){
