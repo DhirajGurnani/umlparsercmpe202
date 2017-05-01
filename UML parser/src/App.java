@@ -24,11 +24,10 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.antlr.v4.runtime.misc.FlexibleHashMap;
 
 import net.sourceforge.plantuml.SourceStringReader;
 
-import com.google.common.base.Strings;
+//import com.google.common.base.Strings;
 import com.sun.prism.impl.Disposer.Record;
 
 
@@ -40,8 +39,8 @@ public class App
 {
 	    public static void main(String[] args) {
 	    	 ArrayList<String> Class_Names = new ArrayList<String>();
-//	        File projectDir = new File(args[0]);
-		        File projectDir = new File("Test Case 1");
+	        File projectDir = new File(args[0]);
+//		        File projectDir = new File("Test Case 5");
 
 	        getting_Class_information getclassnames = new getting_Class_information();
 	        //MethodVisitor getting_method_information = new MethodVisitor();
@@ -127,8 +126,8 @@ public class App
 			//System.out.println(association.all_association);
 			OutputStream png = null;
 			try {
-				png = new FileOutputStream("output.png");
-//				png = new FileOutputStream(args[2]);
+//				png = new FileOutputStream("output.png");
+				png = new FileOutputStream(args[1]);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}

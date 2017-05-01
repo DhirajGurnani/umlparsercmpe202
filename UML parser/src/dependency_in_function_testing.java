@@ -25,7 +25,7 @@ public class dependency_in_function_testing extends VoidVisitorAdapter{
 				temp.y = storing_all_classes.Classes.get(i).Name;
 				in_function_list.addElement(temp);
 					//dependency_list temp_dependency = new dependency_list();
-				System.out.println(storing_all_classes.Classes.get(i).Name);
+				//System.out.println(storing_all_classes.Classes.get(i).Name);
 				}
 			}
 		}
